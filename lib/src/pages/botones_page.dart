@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'dart:math';
+import 'dart:ui';
 
 
 class BotonesPage extends StatelessWidget {
@@ -142,52 +143,59 @@ class BotonesPage extends StatelessWidget {
         // los tableRow siempre deben de tener la misma cantidad de children
         TableRow(
           children: [
-            _crearBotonRedondeado(),
-            _crearBotonRedondeado(),            
+            _crearBotonRedondeado( Colors.blue, Icons.border_all, 'General' ),
+            _crearBotonRedondeado( Colors.purpleAccent, Icons.directions_bus, 'Bus' ),            
           ]
         ),
         TableRow(
           children: [
-            _crearBotonRedondeado(),
-            _crearBotonRedondeado(),            
+            _crearBotonRedondeado( Colors.pinkAccent, Icons.shop, 'Buy' ),
+            _crearBotonRedondeado( Colors.orange, Icons.insert_drive_file, 'File' ),            
           ]
         ),
         TableRow(
           children: [
-            _crearBotonRedondeado(),
-            _crearBotonRedondeado(),            
+            _crearBotonRedondeado( Colors.blueAccent, Icons.movie_filter, 'Entertaiment' ),
+            _crearBotonRedondeado( Colors.green, Icons.cloud, 'Grocery' ),            
           ]
         ),
         TableRow(
           children: [
-            _crearBotonRedondeado(),
-            _crearBotonRedondeado(),            
+            _crearBotonRedondeado( Colors.red, Icons.collections, 'Photos' ),
+            _crearBotonRedondeado( Colors.teal, Icons.help_outline, 'Support' ),            
           ]
         )
       ],
     );
   }
 
-  Widget _crearBotonRedondeado() {
-    return Container(
-      height: 180.0,
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(62, 66, 107, 0.7),
-        borderRadius: BorderRadius.circular(20.0)
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          SizedBox(height: 5.0,),
-          CircleAvatar(
-            backgroundColor: Colors.pinkAccent,
-            radius: 35.0,
-            child: Icon(Icons.swap_vert, color: Colors.white, size: 30.0),
+  Widget _crearBotonRedondeado( Color color, IconData icono, String text ) {
+
+    return ClipRect(
+      child: BackdropFilter(
+      // aplicar blur (crea un efecto borroso)
+        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+        child: Container(
+          height: 180.0,
+          margin: EdgeInsets.all(15.0),
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(62, 66, 107, 0.7),
+            borderRadius: BorderRadius.circular(20.0)
           ),
-          Text('algo', style: TextStyle(color: Colors.pinkAccent),),
-          SizedBox(height: 5.0,)
-        ],
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              SizedBox(height: 5.0,),
+              CircleAvatar(
+                backgroundColor: color,
+                radius: 35.0,
+                child: Icon(icono, color: Colors.white, size: 30.0),
+              ),
+              Text(text, style: TextStyle(color: color),),
+              SizedBox(height: 5.0,)
+            ],
+          ),
+        ),
       ),
     );
   }
