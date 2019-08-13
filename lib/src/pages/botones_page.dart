@@ -20,7 +20,8 @@ class BotonesPage extends StatelessWidget {
             ),
           )
         ],
-      )
+      ),
+      bottomNavigationBar: _bottomNavigationBar(context),
     );
   }
 
@@ -93,6 +94,39 @@ class BotonesPage extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontSize: 18.0))
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _bottomNavigationBar(BuildContext context) {
+
+    // con Theme podemos cambiar o perzonalizar un widget que por defecto ya tiene una perzonalización y no es posible hacerla
+    return new Theme(
+      data: Theme.of(context).copyWith(
+        // cambio de color de fondo del widget en este caso el BottomNavigationBar
+        canvasColor: Color.fromRGBO(55, 57, 84, 1.0),
+        // cambio de color primario (color de los iconos seleccionados)
+        primaryColor: Colors.pinkAccent,
+        // cambio de color del texto (color de los iconos no seleccionados)
+        textTheme: Theme.of(context).textTheme.copyWith(
+          caption: TextStyle( color: Color.fromRGBO(116, 117, 152, 1.0) )
+        )
+      ),
+      child: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today, size: 30.0,),
+            title: Container()
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bubble_chart, size: 30.0,),
+            title: Container()
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.supervised_user_circle, size: 30.0,),
+            title: Container()
+          )
+        ],
       ),
     );
   }
