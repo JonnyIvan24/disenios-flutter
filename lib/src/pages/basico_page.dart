@@ -8,6 +8,7 @@ class BasicoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // SingleChildScrollView sirve para podre hacer un scroll a la vista o pagina y evitar que se nos desborde la info.
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
