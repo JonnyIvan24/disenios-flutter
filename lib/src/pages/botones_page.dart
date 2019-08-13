@@ -11,14 +11,18 @@ class BotonesPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: <Widget>[
+
           _fondoApp(),
+
           SingleChildScrollView(
             child: Column(
               children: <Widget>[
                 _titulos(),
+                _botonesRedondeados(),
               ],
             ),
           )
+
         ],
       ),
       bottomNavigationBar: _bottomNavigationBar(context),
@@ -126,6 +130,63 @@ class BotonesPage extends StatelessWidget {
             icon: Icon(Icons.supervised_user_circle, size: 30.0,),
             title: Container()
           )
+        ],
+      ),
+    );
+  }
+
+  Widget _botonesRedondeados() {
+    return Table(
+      //ocupa una lista de tableRows
+      children: [
+        // los tableRow siempre deben de tener la misma cantidad de children
+        TableRow(
+          children: [
+            _crearBotonRedondeado(),
+            _crearBotonRedondeado(),            
+          ]
+        ),
+        TableRow(
+          children: [
+            _crearBotonRedondeado(),
+            _crearBotonRedondeado(),            
+          ]
+        ),
+        TableRow(
+          children: [
+            _crearBotonRedondeado(),
+            _crearBotonRedondeado(),            
+          ]
+        ),
+        TableRow(
+          children: [
+            _crearBotonRedondeado(),
+            _crearBotonRedondeado(),            
+          ]
+        )
+      ],
+    );
+  }
+
+  Widget _crearBotonRedondeado() {
+    return Container(
+      height: 180.0,
+      margin: EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(62, 66, 107, 0.7),
+        borderRadius: BorderRadius.circular(20.0)
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          SizedBox(height: 5.0,),
+          CircleAvatar(
+            backgroundColor: Colors.pinkAccent,
+            radius: 35.0,
+            child: Icon(Icons.swap_vert, color: Colors.white, size: 30.0),
+          ),
+          Text('algo', style: TextStyle(color: Colors.pinkAccent),),
+          SizedBox(height: 5.0,)
         ],
       ),
     );
